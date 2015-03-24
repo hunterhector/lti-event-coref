@@ -9,16 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>corpus-reader</artifactId>
-
+    <artifactId>event-coref-core</artifactId>
     <dependencies>
         <dependency>
-            <groupId>org.apache.uima</groupId>
-            <artifactId>uimaj-cpe</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.uima</groupId>
-            <artifactId>uimaj-tools</artifactId>
+            <groupId>edu.cmu.lti</groupId>
+            <artifactId>event-coref-utils</artifactId>
         </dependency>
         <dependency>
             <groupId>edu.cmu.lti</groupId>
@@ -26,16 +21,7 @@
         </dependency>
         <dependency>
             <groupId>edu.cmu.lti</groupId>
-            <artifactId>event-coref-utils</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.javatuples</groupId>
-            <artifactId>javatuples</artifactId>
-            <version>1.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jdom</groupId>
-            <artifactId>jdom2</artifactId>
+            <artifactId>corpus-reader</artifactId>
         </dependency>
     </dependencies>
 </project>
