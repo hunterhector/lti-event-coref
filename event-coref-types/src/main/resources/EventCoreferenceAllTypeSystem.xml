@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <name>EventCoreferenceAllTypeSystem</name>
+    <description/>
+    <version>1.0</version>
+    <vendor/>
+    <imports>
+        <import name="EventCoreferenceTypeSystem"/>
+        <import name="ExternalAnnotationTypeSystem"/>
+        <!--<import name="RacrEntityTypes"/>-->
+        <import name="UimaTypeSystem"/>
+        <!--<import name="org.cleartk.TypeSystem"/>-->
+        <import name="DocumentInformationTypeSystem"/>
+        <!--<import name="UtilTypeSystem"/>-->
+    </imports>
+    <types>
+        <typeDescription>
+            <name>edu.cmu.lti.event_coref.type.StanfordToken2WordAlignment</name>
+            <description/>
+            <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+            <features>
+                <featureDescription>
+                    <name>token</name>
+                    <description/>
+                    <rangeTypeName>edu.cmu.lti.event_coref.type.StanfordCorenlpToken</rangeTypeName>
+                </featureDescription>
+                <featureDescription>
+                    <name>word</name>
+                    <description/>
+                    <rangeTypeName>edu.cmu.lti.event_coref.type.Word</rangeTypeName>
+                </featureDescription>
+            </features>
+        </typeDescription>
+        <typeDescription>
+            <name>edu.cmu.lti.event_coref.type.FanseToken2WordAlignment</name>
+            <description/>
+            <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+            <features>
+                <featureDescription>
+                    <name>token</name>
+                    <description/>
+                    <rangeTypeName>edu.cmu.lti.event_coref.type.FanseToken</rangeTypeName>
+                </featureDescription>
+                <featureDescription>
+                    <name>word</name>
+                    <description/>
+                    <rangeTypeName>edu.cmu.lti.event_coref.type.Word</rangeTypeName>
+                </featureDescription>
+            </features>
+        </typeDescription>
+        <typeDescription>
+            <name>edu.cmu.lti.event_coref.type.SemaforLabel2WordAlignment</name>
+            <description/>
+            <supertypeName>uima.tcas.Annotation</supertypeName>
+            <features>
+                <featureDescription>
+                    <name>token</name>
+                    <description/>
+                    <rangeTypeName>edu.cmu.lti.event_coref.type.SemaforLabel</rangeTypeName>
+                </featureDescription>
+                <featureDescription>
+                    <name>word</name>
+                    <description/>
+                    <rangeTypeName>edu.cmu.lti.event_coref.type.Word</rangeTypeName>
+                </featureDescription>
+            </features>
+        </typeDescription>
+    </types>
+</typeSystemDescription>
