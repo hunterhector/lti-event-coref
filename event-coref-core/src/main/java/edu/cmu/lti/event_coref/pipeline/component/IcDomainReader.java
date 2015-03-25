@@ -7,11 +7,11 @@ import edu.cmu.lti.util.general.ErrorUtils;
 import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.collection.CollectionReaderDescription;
+import org.apache.uima.fit.factory.TypeSystemDescriptionFactory;
+import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.resource.metadata.TypeSystemDescription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uimafit.factory.TypeSystemDescriptionFactory;
-import org.uimafit.pipeline.SimplePipeline;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,7 +23,6 @@ public class IcDomainReader {
     private static String className = IcDomainReader.class.getSimpleName();
 
     private static final Logger logger = LoggerFactory.getLogger(IcDomainReader.class);
-
 
     public static void main(String[] args) throws UIMAException {
         logger.info(className + " started...");
