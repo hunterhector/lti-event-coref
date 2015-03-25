@@ -1,9 +1,9 @@
 package edu.cmu.lti.util.uima;
 
-import org.uimafit.component.JCasAnnotator_ImplBase;
 
 import edu.cmu.lti.util.type.ComponentAnnotation;
 import edu.cmu.lti.util.type.ComponentTOP;
+import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 
 /**
  * An implementation of an abstract analysis engine. This analysis engine assumes you to use uimaFIT

@@ -5,7 +5,11 @@
  */
 package edu.cmu.lti.util.uima;
 
-import edu.cmu.lti.util.general.*;
+import com.google.common.collect.Iterables;
+import edu.cmu.lti.util.general.BasicConvenience;
+import edu.cmu.lti.util.general.CollectionUtils;
+import edu.cmu.lti.util.general.ErrorUtils;
+import edu.cmu.lti.util.general.ListUtils;
 import edu.cmu.lti.util.model.AnnotationCondition;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.uima.cas.*;
@@ -809,6 +813,11 @@ public class UimaConvenience extends BasicConvenience {
         logger.info(String.format("Processing article: %s", fileName));
     }
 
+    public static void printProcessLog(JCas aJCas, org.slf4j.Logger logger) {
+        String fileName = getShortDocumentName(aJCas);
+        logger.info(String.format("Processing article: %s", fileName));
+    }
+
     public static String getShortDocumentName(JCas aJCas) {
         SourceDocumentInformation srcDocInfo = JCasUtil.selectSingle(aJCas,
                 SourceDocumentInformation.class);
@@ -818,4 +827,26 @@ public class UimaConvenience extends BasicConvenience {
         return FilenameUtils.getBaseName(srcDocInfo.getUri());
     }
 
+    public static String getShortDocumentNameWithOffset(JCas aJCas) {
+        SourceDocumentInformation srcDocInfo = selectSingle(aJCas, SourceDocumentInformation.class);
+
+        if (srcDocInfo == null) {
+            return "";
+        }
+
+        return FilenameUtils.getBaseName(srcDocInfo.getUri()) + "_" + srcDocInfo.getOffsetInSource();
+    }
+
+    /**
+     * Mimic JCasUtil.selectSingle, instead this will return null if not found, instead of Exception
+     *
+     * @param aJCas
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public static <T extends TOP> T selectSingle(JCas aJCas, Class<T> clazz) {
+        Collection<T> infos = org.apache.uima.fit.util.JCasUtil.select(aJCas, clazz);
+        return Iterables.getFirst(infos, null);
+    }
 }

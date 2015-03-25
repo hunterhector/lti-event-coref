@@ -11,11 +11,14 @@
 
     <artifactId>event-coref-utils</artifactId>
 
+    <repositories>
+        <repository>
+            <id>util-repo</id>
+            <url>file://${basedir}/lib</url>
+        </repository>
+    </repositories>
+
     <dependencies>
-        <dependency>
-            <groupId>org.uimafit</groupId>
-            <artifactId>uimafit</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.apache.uima</groupId>
             <artifactId>uimaj-core</artifactId>
@@ -32,6 +35,39 @@
             <groupId>net.sf.opencsv</groupId>
             <artifactId>opencsv</artifactId>
             <version>2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.uima</groupId>
+            <artifactId>uimafit-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.uimafit</groupId>
+            <artifactId>uimafit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>edu.cmu.lti</groupId>
+            <artifactId>jawjaw</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>edu.cmu.lti</groupId>
+            <artifactId>ws4j</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>net.ricecode</groupId>
+            <artifactId>similarity</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.javatuples</groupId>
+            <artifactId>javatuples</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+            <version>4.7.2</version>
         </dependency>
     </dependencies>
 </project>
