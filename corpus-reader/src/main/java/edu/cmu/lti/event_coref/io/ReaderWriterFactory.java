@@ -338,11 +338,12 @@ public class ReaderWriterFactory {
      */
     public static AnalysisEngineDescription createSelectiveXmiWriter(String parentOutputDirPath,
                                                                      String baseOutputDirName, Integer stepNumber, String outputFileSuffix,
-                                                                     Set<Integer> outputDocumentNumbers) throws ResourceInitializationException {
+                                                                     Integer[] outputDocumentNumbers) throws ResourceInitializationException {
         AnalysisEngineDescription writer = AnalysisEngineFactory.createPrimitiveDescription(
-                StepBasedDirXmiWriter.class, StepBasedDirXmiWriter.PARAM_PARENT_OUTPUT_DIR_PATH,
-                parentOutputDirPath, StepBasedDirXmiWriter.PARAM_BASE_OUTPUT_DIR_NAME,
-                baseOutputDirName, StepBasedDirXmiWriter.PARAM_OUTPUT_FILE_SUFFIX, outputFileSuffix,
+                StepBasedDirXmiWriter.class,
+                StepBasedDirXmiWriter.PARAM_PARENT_OUTPUT_DIR_PATH, parentOutputDirPath,
+                StepBasedDirXmiWriter.PARAM_BASE_OUTPUT_DIR_NAME, baseOutputDirName,
+                StepBasedDirXmiWriter.PARAM_OUTPUT_FILE_SUFFIX, outputFileSuffix,
                 StepBasedDirXmiWriter.PARAM_OUTPUT_STEP_NUMBER, stepNumber,
                 StepBasedDirXmiWriter.PARAM_OUTPUT_FILE_NUMBERS, outputDocumentNumbers);
         return writer;
