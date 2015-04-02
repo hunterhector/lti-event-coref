@@ -6,7 +6,7 @@
     <vendor/>
     <types>
         <typeDescription>
-            <name>edu.cmu.lti.util.type.ComponentAnnotation</name>
+            <name>edu.cmu.lti.utils.type.ComponentAnnotation</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
             <features>
@@ -25,7 +25,7 @@
             </features>
         </typeDescription>
         <typeDescription>
-            <name>edu.cmu.lti.util.type.ComponentTOP</name>
+            <name>edu.cmu.lti.utils.type.ComponentTOP</name>
             <description/>
             <supertypeName>uima.cas.TOP</supertypeName>
             <features>

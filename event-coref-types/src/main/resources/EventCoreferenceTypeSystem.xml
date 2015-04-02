@@ -12,7 +12,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.Article</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>articleId</name>
@@ -39,7 +39,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.EventRelation</name>
       <description>Consider change this name</description>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>relationType</name>
@@ -61,7 +61,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.Sentence</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>sentenceId</name>
@@ -78,7 +78,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.Paragraph</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>paragraphId</name>
@@ -90,7 +90,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.Word</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>wordId</name>
@@ -127,7 +127,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.EntityBasedComponent</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>containingEntityMentions</name>
@@ -156,7 +156,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.EntityBasedComponentLink</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>eventMention</name>
@@ -178,7 +178,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.EventMention</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>goldStandardEventMentionId</name>
@@ -294,7 +294,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.EventCoreferenceCluster</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>clusterId</name>
@@ -322,7 +322,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.EventCoreferenceRelation</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>relationId</name>
@@ -354,7 +354,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.TemporalVariable</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>name</name>
@@ -366,7 +366,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.TemporalRelation</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>relation</name>
@@ -393,7 +393,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.PairwiseEventCoreferenceEvaluation</name>
       <description>The type storing the information on event coreference.</description>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>eventMentionI</name>
@@ -455,7 +455,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.PairwiseEventFeatureNames</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>featureNames</name>
@@ -467,7 +467,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.DocumentStatistics</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>numberOfEventPairs</name>
@@ -541,7 +541,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.EntityMention</name>
       <description>Try to integerated all entity mention from other system to this single component.</description>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>entityType</name>
@@ -584,7 +584,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.EntityCoreferenceCluster</name>
       <description>Cluster of entity mentions</description>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>clusterId</name>
@@ -607,7 +607,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.EventSurfaceSimilarity</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>wordNetWuPalmer</name>
@@ -644,7 +644,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.TermFrequencyInfo</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>termFrequency</name>
@@ -671,7 +671,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.SemanticDatabasePairwiseDecision</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>eventI</name>
@@ -693,7 +693,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.NumberAnnotation</name>
       <description>Annotate numbers and their normalized form</description>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>normalizedString</name>
@@ -724,12 +724,12 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.Verb</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.Entity</name>
       <description>An entity refers to an underlying entity, it might corresponding to multiple entity mentions. It can be viewed that we assign the attributes to each cluster</description>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>entityType</name>
@@ -772,7 +772,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.Event</name>
       <description>An abstract annotation for event, which is a generalized concept that contains event mentions. It could be seen as we assign some attributes to the event mention clusters.</description>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>annotationId</name>
@@ -836,7 +836,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.EventArgumentLink</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>event</name>
@@ -858,7 +858,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.EventMentionArgumentLink</name>
       <description>Link between an event mention to its argument (which is an entity mention)</description>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>eventMention</name>
@@ -905,12 +905,12 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.EventMentionContext</name>
       <description>The full context of the event mention</description>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.Script</name>
       <description>Intend to be use for script based analysis. Still tentative</description>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>goal</name>
@@ -928,7 +928,7 @@
   <typeDescription>
       <name>edu.cmu.lti.event_coref.type.ScriptSpan</name>
       <description>A span that usually a script would occur in.</description>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
     </typeDescription>
   <typeDescription>
       <name>edu.cmu.lti.event_coref.type.EventArgument</name>
@@ -938,7 +938,7 @@
   <typeDescription>
       <name>edu.cmu.lti.event_coref.type.AbstractFeature</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>score</name>

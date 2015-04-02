@@ -11,7 +11,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.StanfordEntityCoreferenceCluster</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>entityCoreferenceClusterId</name>
@@ -29,7 +29,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.StanfordCoreNlpTimex</name>
       <description>See http://www-nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/time/Timex.html</description>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>tid</name>
@@ -56,7 +56,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.StanfordEntityMention</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>entityMentionId</name>
@@ -78,7 +78,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.StanfordCorenlpToken</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>tokenId</name>
@@ -100,7 +100,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.StanfordCorenlpSentence</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>sentenceId</name>
@@ -112,7 +112,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.StanfordDependencyNode</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>headRelations</name>
@@ -141,7 +141,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.StanfordDependencyRelation</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>head</name>
@@ -168,7 +168,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.Clause</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>headRelations</name>
@@ -200,7 +200,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.ClauseRelation</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>relationType</name>
@@ -222,7 +222,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.FanseToken</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>tokenId</name>
@@ -273,7 +273,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.FanseDependencyRelation</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>head</name>
@@ -295,7 +295,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.FanseSemanticRelation</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>semanticAnnotation</name>
@@ -317,7 +317,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.SemaforLabel</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>name</name>
@@ -334,7 +334,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.SemaforLayer</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>name</name>
@@ -362,7 +362,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.SemaforAnnotationSet</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>layers</name>
@@ -403,7 +403,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.StanfordTreeAnnotation</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>pennTreeLabel</name>
@@ -436,7 +436,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.OpennlpChunk</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>tag</name>
@@ -448,12 +448,12 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.ExtendedNPChunk</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.DbpediaAnnotation</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>Uri</name>
@@ -475,7 +475,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.CleartkTimemlEvent</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>eid</name>
@@ -512,7 +512,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.CleartkTimemlTimex3</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>tid</name>
@@ -529,7 +529,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.CleartkTimemlTlink</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>relType</name>
@@ -556,7 +556,7 @@
   <typeDescription>
       <name>edu.cmu.lti.event_coref.type.ClearnlpMention</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>mentionId</name>
@@ -573,7 +573,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.ClearnlpDependencyRelation</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>dependencyLabel</name>
@@ -595,7 +595,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.ClearnlpToken</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>lemma</name>
@@ -641,7 +641,7 @@
   <typeDescription>
       <name>edu.cmu.lti.event_coref.type.ClearnlpSemanticRelation</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
     <features>
         <featureDescription>
           <name>semanticRoleLabel</name>
@@ -663,7 +663,7 @@
   <typeDescription>
       <name>edu.cmu.lti.event_coref.type.CombinedToken</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>headDependencyRelations</name>
@@ -694,7 +694,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.CombinedDependencyRelation</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>dependencyLabel</name>
@@ -721,7 +721,7 @@
     <typeDescription>
       <name>edu.cmu.lti.event_coref.type.CombinedSemanticRelation</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentTOP</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentTOP</supertypeName>
       <features>
         <featureDescription>
           <name>semanticRoleLabel</name>
@@ -748,7 +748,7 @@
   <typeDescription>
       <name>edu.cmu.lti.event_coref.type.ArkrefEntityMention</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>entityMentionId</name>
@@ -770,7 +770,7 @@
   <typeDescription>
       <name>edu.cmu.lti.event_coref.type.ArkrefToken</name>
       <description/>
-      <supertypeName>edu.cmu.lti.util.type.ComponentAnnotation</supertypeName>
+      <supertypeName>edu.cmu.lti.utils.type.ComponentAnnotation</supertypeName>
     </typeDescription>
   </types>
 </typeSystemDescription>
