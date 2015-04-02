@@ -6,9 +6,9 @@ package edu.cmu.lti.event_coref.analysis_engine.prerequisite;
 import edu.cmu.lti.event_coref.type.Word;
 import edu.washington.cs.knowitall.morpha.MorphaStemmer;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
-import org.uimafit.component.JCasAnnotator_ImplBase;
-import org.uimafit.util.JCasUtil;
 
 /**
  * There is a problem while matching words, the morphological changes of words

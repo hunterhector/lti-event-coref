@@ -5,8 +5,8 @@ import edu.cmu.cs.lti.ark.fn.parsing.SemaforParseResult;
 import edu.cmu.cs.lti.ark.fn.pipeline.SemaforFullPipeline;
 import edu.cmu.cs.lti.ark.fn.pipeline.parsing.ParsingException;
 import edu.cmu.lti.event_coref.type.*;
-import edu.cmu.lti.util.annotator.AbstractLoggingAnnotator;
-import edu.cmu.lti.util.uima.UimaAnnotationUtils;
+import edu.cmu.lti.utils.annotator.AbstractLoggingAnnotator;
+import edu.cmu.lti.utils.uima.UimaAnnotationUtils;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.util.FSCollectionFactory;
@@ -26,9 +26,10 @@ import java.util.List;
  * Required Stanford Corenlp ssplit, tokenize, pos, lemma
  * <p/>
  * Created with IntelliJ IDEA.
- * User: zhengzhongliu
- * Date: 1/23/15
- * Time: 11:01 PM
+ *
+ * @author Zhengzhong Liu
+ *         Date: 1/23/15
+ *         Time: 11:01 PM
  */
 public class SemaforAnnotator extends AbstractLoggingAnnotator {
 
@@ -48,7 +49,7 @@ public class SemaforAnnotator extends AbstractLoggingAnnotator {
             logger.info(String.format("Initializing from model : %s", semaforModelDir.getCanonicalPath()));
             semafor = new SemaforFullPipeline(semaforModelDir);
         } catch (IOException | URISyntaxException | ClassNotFoundException | MaltChainedException e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException();
         }
     }
 

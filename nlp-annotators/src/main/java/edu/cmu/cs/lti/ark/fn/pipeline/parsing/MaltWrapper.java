@@ -4,6 +4,7 @@ import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import edu.cmu.cs.lti.ark.fn.data.prep.formats.Sentence;
 import edu.cmu.cs.lti.ark.fn.data.prep.formats.Token;
+import edu.cmu.cs.lti.ark.fn.data.prep.formats.TokenBuilder;
 import org.maltparser.MaltParserService;
 import org.maltparser.core.exception.MaltChainedException;
 import org.maltparser.core.symbol.SymbolTable;
@@ -19,9 +20,10 @@ import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: zhengzhongliu
  * Date: 1/23/15
  * Time: 11:17 PM
+ *
+ * @author Zhengzhong Liu
  */
 public class MaltWrapper implements ParserImpl {
 
@@ -70,7 +72,7 @@ public class MaltWrapper implements ParserImpl {
                 Edge arc = node.getHeadEdge();
                 String deprel = arc.hasLabel(deprelTable) ? arc.getLabelSymbol(deprelTable) : rootLabel;
 
-                Token parsedToken = new Token(null, null, null, null, null, null, head, deprel, null, null);
+                Token parsedToken = TokenBuilder.aToken(token).withHead(head).withDeprel(deprel).build();
                 parsedTokens.add(parsedToken);
             }
 

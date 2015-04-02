@@ -2,7 +2,7 @@ package edu.cmu.cs.lti.ark.fn.pipeline.parsing;
 
 /**
  * Created with IntelliJ IDEA.
- * User: zhengzhongliu
+ * @author Zhengzhong Liu
  * Date: 1/24/15
  * Time: 1:30 PM
  */

@@ -4,7 +4,7 @@ import edu.cmu.lti.event_coref.type.Sentence;
 import edu.cmu.lti.event_coref.type.StanfordCorenlpSentence;
 import edu.cmu.lti.event_coref.type.StanfordCorenlpToken;
 import edu.cmu.lti.event_coref.type.Word;
-import edu.cmu.lti.util.uima.UimaConvenience;
+import edu.cmu.lti.utils.uima.UimaConvenience;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
@@ -30,9 +30,9 @@ public class StanfordCorenlpBasedBasicLanguageUnitAnnotator extends
         JCasAnnotator_ImplBase {
     private static final Logger logger = LoggerFactory.getLogger(StanfordCorenlpBasedBasicLanguageUnitAnnotator.class);
 
-    public final static String PARAM_ANNOTATION_VIEWNAMES = "annotationViewNames";
+    public final static String PARAM_ANNOTATION_VIEW_NAMES = "annotationViewNames";
 
-    @ConfigurationParameter(name = PARAM_ANNOTATION_VIEWNAMES, mandatory = true)
+    @ConfigurationParameter(name = PARAM_ANNOTATION_VIEW_NAMES, mandatory = true)
     List<String> annotationViewNames;
 
     // class name is too long to use
@@ -71,7 +71,6 @@ public class StanfordCorenlpBasedBasicLanguageUnitAnnotator extends
     private void annotateWords(JCas aJCas, JCas viewToAnnotate) {
         // 1. Annotate the Word type
         int indexCount = 1;
-
         if (JCasUtil.select(viewToAnnotate, Word.class).isEmpty()) {
             for (StanfordCorenlpToken token : JCasUtil.select(aJCas,
                     StanfordCorenlpToken.class)) {
@@ -94,7 +93,6 @@ public class StanfordCorenlpBasedBasicLanguageUnitAnnotator extends
             lemma = lemma.substring(0, lemma.length() - 1);
         }
         word.setLemma(lemma);
-
         word.setWordId(Integer.toString(wordId));
         word.addToIndexes();
     }

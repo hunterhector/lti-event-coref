@@ -4,8 +4,8 @@
 package edu.cmu.lti.event_coref.analysis_engine.prerequisite;
 
 import edu.cmu.lti.event_coref.type.*;
-import edu.cmu.lti.util.type.ComponentAnnotation;
-import edu.cmu.lti.util.uima.UimaConvenience;
+import edu.cmu.lti.utils.type.ComponentAnnotation;
+import edu.cmu.lti.utils.uima.UimaConvenience;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.util.JCasUtil;
@@ -75,10 +75,10 @@ public class TokenAlignmentAnnotator extends JCasAnnotator_ImplBase {
             } else {// in case the token range is larger than the word, use its covering token
                 Collection<T> coveringToken = wordCoveringToken.get(word);
                 if (coveringToken.size() == 0) {
-                    System.err.println(String.format("The word : %s [%d, %d] cannot be associated with a %s",
+                    logger.debug(String.format("The word : %s [%d, %d] cannot be associated with a %s",
                             word.getCoveredText(), word.getBegin(), word.getEnd(), clazz.getSimpleName()));
                 } else {
-                    System.out.println("Use covering");
+                    logger.debug("Use covering");
                     for (T token : coveringToken) {
                         token2Word.put(token, word);
                     }

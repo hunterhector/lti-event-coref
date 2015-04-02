@@ -2,11 +2,11 @@ package edu.cmu.lti.event_coref.analysis_engine;
 
 import com.google.common.collect.ArrayListMultimap;
 import edu.cmu.lti.event_coref.type.*;
-import edu.cmu.lti.util.general.ErrorUtils;
-import edu.cmu.lti.util.general.FileUtils;
-import edu.cmu.lti.util.general.TimeUtils;
-import edu.cmu.lti.util.model.Span;
-import edu.cmu.lti.util.uima.UimaConvenience;
+import edu.cmu.lti.utils.general.ErrorUtils;
+import edu.cmu.lti.utils.general.FileUtils;
+import edu.cmu.lti.utils.general.TimeUtils;
+import edu.cmu.lti.utils.model.Span;
+import edu.cmu.lti.utils.uima.UimaConvenience;
 import edu.stanford.nlp.dcoref.CorefChain;
 import edu.stanford.nlp.dcoref.CorefChain.CorefMention;
 import edu.stanford.nlp.dcoref.CorefCoreAnnotations.CorefChainAnnotation;
@@ -25,6 +25,9 @@ import edu.stanford.nlp.time.Timex;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.TreeCoreAnnotations.TreeAnnotation;
 import edu.stanford.nlp.util.CoreMap;
+import gnu.trove.iterator.TObjectIntIterator;
+import gnu.trove.map.TObjectIntMap;
+import gnu.trove.map.hash.TObjectIntHashMap;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.examples.SourceDocumentInformation;
@@ -35,7 +38,10 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSList;
 import org.apache.uima.resource.ResourceInitializationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
@@ -51,16 +57,23 @@ import java.util.regex.Pattern;
  * @author Jun Araki
  */
 public class StanfordCoreNlpAnnotator extends JCasAnnotator_ImplBase {
-    public final static String PARAM_USE_SUTIME = "UseSUTime";
+    public final static String PARAM_USE_SUTIME = "UseSuTime";
+
+    public final static String PARAM_SU_TIME_CONF = "SuTimeConfPath";
 
     @ConfigurationParameter(name = PARAM_USE_SUTIME)
     private Boolean useSUTime;
+
+    @ConfigurationParameter(name = PARAM_SU_TIME_CONF, mandatory = false)
+    private String suPath;
 
     private final static String ANNOTATOR_COMPONENT_ID = "System-stanford-corenlp";
 
     private StanfordCoreNLP pipeline;
 
     private final static String PARSE_TREE_ROOT_NODE_LABEL = "ROOT";
+
+    private static final Logger logger = LoggerFactory.getLogger(StanfordCoreNlpAnnotator.class);
 
     @Override
     public void initialize(UimaContext aContext)
@@ -73,44 +86,27 @@ public class StanfordCoreNlpAnnotator extends JCasAnnotator_ImplBase {
         props.setProperty("dcoref.postprocessing", "true");
         if (useSUTime) {
             props.setProperty("ner.useSUTime", "true");
+            if (suPath == null) {
+                throw new IllegalArgumentException("SU time configuration path is not provided");
+            }
+
+            if (!new File(suPath).isDirectory()) {
+                throw new IllegalArgumentException(String.format("Cannot find SU conf path [%s]", suPath));
+            }
         } else {
             props.setProperty("ner.useSUTime", "false");
         }
-
-        // Here I assume that we have sentence split already, and use EOL each.
-        // props.setProperty("ssplit.eolonly", "true");
-        // props.setProperty("tokenize.whitespace", "true");
 
         pipeline = new StanfordCoreNLP(props);
     }
 
     @Override
     public void process(JCas aJCas) throws AnalysisEngineProcessException {
-        UimaConvenience.printProcessLog(aJCas);
+        UimaConvenience.printProcessLog(aJCas, logger);
 
-        // Stanford Parser cannot recognize the Headline and Datetime, so some
-        // periods are added
-        // manually to the document text. It is hacky but easier because no
-        // character indices are
-        // affected.
         String documentText = aJCas.getDocumentText();
 
-        // Datetime datetime = (Datetime)
-        // aJCas.getJFSIndexRepository().getAllIndexedFS(Datetime.type)
-        // .get();
-        // Headline headline = (Headline)
-        // aJCas.getJFSIndexRepository().getAllIndexedFS(Headline.type)
-        // .get();
-        //
-        // int datetimeEnd = datetime.getEnd();
-        // int headlineEnd = headline.getEnd();
-        // String datetimeSentMarkedText = replaceAt(originDocumentText,
-        // datetimeEnd, '.');
-        // String documentText = replaceAt(datetimeSentMarkedText, headlineEnd,
-        // '.');
-
-        // add period for title in a hacky way
-        // assume first sentence is title
+        // add period for title in a hacky way assume first sentence is title
         List<Sentence> sentences = new ArrayList<Sentence>(JCasUtil.select(
                 aJCas, Sentence.class));
         if (!sentences.isEmpty()) {
@@ -121,6 +117,8 @@ public class StanfordCoreNlpAnnotator extends JCasAnnotator_ImplBase {
 
         Annotation document = new Annotation(documentText);
         pipeline.annotate(document);
+
+        Map<Span, StanfordEntityMention> spanMentionMap = new HashMap<Span, StanfordEntityMention>();
 
         List<CoreMap> sentAnnos = document.get(SentencesAnnotation.class);
 
@@ -144,26 +142,24 @@ public class StanfordCoreNlpAnnotator extends JCasAnnotator_ImplBase {
             // Add NER annotation
             String ne = token.get(NamedEntityTagAnnotation.class);
             if (ne != null) {
-                // System.out.println("[" + token.originalText() + "] :" + ne);
-                if (ne.equals(preNe) && !preNe.equals("")) {
-
-                } else if (preNe.equals("")) {
-                    // if the previous is start of sentence(no label).
-                    neBegin = beginIndex;
-                    preNe = ne;
-                } else {
-                    if (!preNe.equals("O")) {// "O" represent no label (other)
-                        StanfordEntityMention sne = new StanfordEntityMention(
-                                aJCas);
-                        sne.setBegin(neBegin);
-                        sne.setEnd(neEnd);
-                        sne.setEntityType(preNe);
-                        // sne.setEntitySpan(documentText.substring(neBegin,neEnd));
-                        sne.addToIndexes(aJCas);
+                if (!ne.equals(preNe) || preNe.equals("")) {
+                    if (preNe.equals("")) {
+                        // if the previous is start of sentence(no label).
+                        neBegin = beginIndex;
+                        preNe = ne;
+                    } else {
+                        if (!preNe.equals("O")) {// "O" represent no label (other)
+                            StanfordEntityMention sne = new StanfordEntityMention(
+                                    aJCas);
+                            sne.setBegin(neBegin);
+                            sne.setEnd(neEnd);
+                            sne.setEntityType(preNe);
+                            spanMentionMap.put(new Span(neBegin, neEnd), sne);
+                        }
+                        // set the next span of NE
+                        neBegin = beginIndex;
+                        preNe = ne;
                     }
-                    // set the next span of NE
-                    neBegin = beginIndex;
-                    preNe = ne;
                 }
                 neEnd = endIndex;
             }
@@ -184,9 +180,7 @@ public class StanfordCoreNlpAnnotator extends JCasAnnotator_ImplBase {
             Tree tree = sentAnno.get(TreeAnnotation.class);
             addPennTreeAnnotation(tree, aJCas, null);
 
-            // the following add the collapsed cc processed dependencies of each
-            // sentence into CAS
-            // annotation
+            // the following add the collapsed cc processed dependencies of each sentence into CAS annotation
             SemanticGraph depends = sentAnno
                     .get(CollapsedCCProcessedDependenciesAnnotation.class);
             // SemanticGraph basicDepends =
@@ -224,16 +218,6 @@ public class StanfordCoreNlpAnnotator extends JCasAnnotator_ImplBase {
                 stanford2UimaMap.put(stanfordNode, node);
             }
 
-            // now create edges of these nodes
-            // Map<StanfordDependencyNode, List<StanfordDependencyRelation>>
-            // headRelationMap = new
-            // HashMap<StanfordDependencyNode,
-            // List<StanfordDependencyRelation>>();
-            // Map<StanfordDependencyNode, List<StanfordDependencyRelation>>
-            // childRelationMap = new
-            // HashMap<StanfordDependencyNode,
-            // List<StanfordDependencyRelation>>();
-
             ArrayListMultimap<StanfordDependencyNode, StanfordDependencyRelation> headRelationMap = ArrayListMultimap
                     .create();
             ArrayListMultimap<StanfordDependencyNode, StanfordDependencyRelation> childRelationMap = ArrayListMultimap
@@ -241,9 +225,8 @@ public class StanfordCoreNlpAnnotator extends JCasAnnotator_ImplBase {
 
             for (SemanticGraphEdge stanfordEdge : depends.edgeIterable()) {
                 String edgeType = stanfordEdge.getRelation().toString();
-                double edgeWeight = stanfordEdge.getWeight(); // weight is
-                // usually
-                // infinity
+                // weight is usually infinity
+                double edgeWeight = stanfordEdge.getWeight();
                 StanfordDependencyNode head = stanford2UimaMap.get(stanfordEdge
                         .getGovernor());
                 StanfordDependencyNode child = stanford2UimaMap
@@ -287,17 +270,13 @@ public class StanfordCoreNlpAnnotator extends JCasAnnotator_ImplBase {
                     StanfordCorenlpToken.class, sSent));
         }
 
-        Map<Span, StanfordEntityMention> spanMentionMap = new HashMap<Span, StanfordEntityMention>();
-        for (StanfordEntityMention sem : JCasUtil.select(aJCas,
-                StanfordEntityMention.class)) {
-            spanMentionMap.put(new Span(sem.getBegin(), sem.getEnd()), sem);
-        }
-
         for (Entry<Integer, CorefChain> entry : graph.entrySet()) {
             CorefChain refChain = entry.getValue();
             StanfordEntityCoreferenceCluster cc = new StanfordEntityCoreferenceCluster(
                     aJCas);
-            List<StanfordEntityMention> stanfordEntityMentions = new ArrayList<StanfordEntityMention>();
+            List<StanfordEntityMention> semInCluster = new ArrayList<StanfordEntityMention>();
+
+            TObjectIntMap<String> typeCount = new TObjectIntHashMap<>();
 
             for (CorefMention mention : refChain.getMentionsInTextualOrder()) {
                 List<StanfordCorenlpToken> sTokens = sentTokens
@@ -306,49 +285,64 @@ public class StanfordCoreNlpAnnotator extends JCasAnnotator_ImplBase {
                 int end = sTokens.get(mention.endIndex - 2).getEnd();
 
                 StanfordEntityMention em;
-                if (spanMentionMap.containsKey(new Span(begin, end))) {
-                    em = spanMentionMap.get(new Span(begin, end));
+                Span thisSpan = new Span(begin, end);
+                if (spanMentionMap.containsKey(thisSpan)) {
+                    em = spanMentionMap.get(thisSpan);
+                    if (em.getEntityType() != null) {
+                        typeCount.adjustOrPutValue(em.getEntityType(), 1, 1);
+                    }
                 } else {
                     em = new StanfordEntityMention(aJCas, begin, end);
-                    em.addToIndexes(aJCas);
+                    spanMentionMap.put(thisSpan, em);
                 }
                 em.setEntityCoreferenceCluster(cc);
-                stanfordEntityMentions.add(em);
+                semInCluster.add(em);
+            }
+
+            int maxTypeCount = 0;
+            String maxType = null;
+            for (TObjectIntIterator<String> iter = typeCount.iterator(); iter.hasNext(); ) {
+                iter.advance();
+                if (iter.value() > maxTypeCount) {
+                    maxType = iter.key();
+                    maxTypeCount = iter.value();
+                }
+            }
+
+            //transfer mention type in cluster
+            for (StanfordEntityMention mention : semInCluster) {
+                if (mention.getEntityType() == null && maxType != null) {
+                    mention.setEntityType(maxType);
+                    logger.debug(String.format("Mention [%s] assigned with cluster type [%s]",
+                            mention.getCoveredText(), maxType));
+                }
             }
 
             // convert the list to CAS entity mention FSList type
             FSList mentionFSList = FSCollectionFactory.createFSList(aJCas,
-                    stanfordEntityMentions);
+                    semInCluster);
 
             // Put that in the cluster type
             cc.setEntityMentions(mentionFSList);
             cc.addToIndexes(aJCas);
         }
 
+
+        //add to indices at once to avoid jcas confusion
+        for (Entry<Span, StanfordEntityMention> span2Mention : spanMentionMap.entrySet()) {
+            span2Mention.getValue().addToIndexes();
+        }
+
         if (!useSUTime) {
-            // Stop here if you don't use SUTime.
             return;
         }
 
         // The following add Time annotation
-        // TimeAnnotator should come after the tokenizer, sentence splitter, and
-        // pos tagger
+        // TimeAnnotator should come after the tokenizer, sentence splitter,
+        // and pos tagger
         Properties propsTime = new Properties();
 
-        // TODO: Create a customized rule to capture "last May 16" correctly in
-        // LTW_ENG_20040319.0128.src.xml.txt
-        StringBuilder ruleFiles = new StringBuilder();
-        // A light hack: includes
-        // '../edu.cmu.lti.event_coref.ann.StanfordCoreNlpAnnotator'
-        // to allow other projects to successfully run this code.
-        String relativePath = "../edu.cmu.lti.event_coref.ann.StanfordCoreNlpAnnotator/conf/sutime";
-        ruleFiles.append(relativePath + "/defs.sutime.txt");
-        ruleFiles.append(",");
-        ruleFiles.append(relativePath + "/english.sutime.txt");
-        ruleFiles.append(",");
-        ruleFiles.append(relativePath + "/english.holidays.sutime.txt");
-
-        propsTime.put("sutime.rules", ruleFiles.toString());
+        propsTime.put("sutime.rules", suPath + "/defs.sutime.txt" + "," + suPath + "/english.sutime.txt" + "," + suPath + "/english.holidays.sutime.txt");
         propsTime.put("sutime.markTimeRanges", true);
         propsTime.put("sutime.includeNested", true);
         propsTime.put("sutime.teRelHeurLevel", "MORE");
@@ -391,12 +385,6 @@ public class StanfordCoreNlpAnnotator extends JCasAnnotator_ImplBase {
             annTimex.setTid(timexObj.tid());
             annTimex.setTimexType(timexObj.timexType());
             annTimex.setValue(timexObj.value());
-            // The 'range' is not identified reliably.
-            /*
-             * if ("DATE".equals(timexObj.timexType())) {
-			 * annTimex.setRange(timexObj.getRange().toString()); }
-			 */
-
             annTimex.setComponentId(ANNOTATOR_COMPONENT_ID);
             annTimex.addToIndexes();
         }

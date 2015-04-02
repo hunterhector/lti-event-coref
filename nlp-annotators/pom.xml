@@ -40,6 +40,18 @@
             <artifactId>uimaj-tools</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>edu.washington.cs.knowitall</groupId>
             <artifactId>morpha-stemmer</artifactId>
             <version>1.0.5</version>
@@ -47,7 +59,6 @@
         <dependency>
             <groupId>edu.stanford.nlp</groupId>
             <artifactId>stanford-corenlp</artifactId>
-            <version>3.5.0</version>
         </dependency>
         <dependency>
             <groupId>edu.stanford.nlp</groupId>
@@ -74,17 +85,21 @@
             <artifactId>javatuples</artifactId>
             <version>1.2</version>
         </dependency>
-
-        <!-- Currently use a local dataset-->
         <dependency>
-            <groupId>tratz</groupId>
-            <artifactId>fanse</artifactId>
-            <version>0.2.2</version>
+            <groupId>org.apache.uima</groupId>
+            <artifactId>uimafit-core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.maltparser</groupId>
             <artifactId>maltparser</artifactId>
             <version>1.7.2</version>
+        </dependency>
+
+        <!-- Currently use a local repo-->
+        <dependency>
+            <groupId>tratz</groupId>
+            <artifactId>fanse</artifactId>
+            <version>0.2.2</version>
         </dependency>
         <dependency>
             <groupId>edu.cmu.cs.lti.ark</groupId>
@@ -92,14 +107,13 @@
             <version>3.0-alpha-04</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.uima</groupId>
-            <artifactId>uimafit-core</artifactId>
-            <version>2.1.0</version>
-        </dependency>
-        <dependency>
             <groupId>tratz</groupId>
             <artifactId>fanse</artifactId>
             <version>0.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.trove4j</groupId>
+            <artifactId>trove4j</artifactId>
         </dependency>
     </dependencies>
 </project>

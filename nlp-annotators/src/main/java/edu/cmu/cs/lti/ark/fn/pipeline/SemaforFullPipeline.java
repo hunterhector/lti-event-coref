@@ -8,6 +8,8 @@ import edu.cmu.cs.lti.ark.fn.pipeline.parsing.MaltWrapper;
 import edu.cmu.cs.lti.ark.fn.pipeline.parsing.ParserImpl;
 import edu.cmu.cs.lti.ark.fn.pipeline.parsing.ParsingException;
 import org.maltparser.core.exception.MaltChainedException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,14 +19,17 @@ import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * User: zhengzhongliu
  * Date: 1/23/15
  * Time: 11:09 PM
+ *
+ * @author Zhengzhong Liu
  */
 public class SemaforFullPipeline {
     Semafor semafor;
 
     ParserImpl malt;
+
+    private static final Logger logger = LoggerFactory.getLogger(SemaforFullPipeline.class);
 
     public SemaforFullPipeline(File modelDir) throws IOException, URISyntaxException, ClassNotFoundException, MaltChainedException {
         semafor = Semafor.getSemaforInstance(modelDir.getCanonicalPath());
@@ -77,15 +82,6 @@ public class SemaforFullPipeline {
                 add("NN");
             }
         };
-
-//        List<String> cpos = new ArrayList<String>() {
-//            {
-//                add("PRP");
-//                add("VBZ");
-//                add("DT");
-//                add("NN");
-//            }
-//        };
 
         SemaforFullPipeline pipeline = new SemaforFullPipeline(new File("../models/semafor_malt_model_20121129"));
 

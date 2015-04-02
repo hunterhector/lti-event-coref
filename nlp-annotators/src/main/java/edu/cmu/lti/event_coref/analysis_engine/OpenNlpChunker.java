@@ -3,16 +3,18 @@ package edu.cmu.lti.event_coref.analysis_engine;
 import edu.cmu.lti.event_coref.type.OpennlpChunk;
 import edu.cmu.lti.event_coref.type.Sentence;
 import edu.cmu.lti.event_coref.type.Word;
-import edu.cmu.lti.util.uima.UimaConvenience;
+import edu.cmu.lti.utils.uima.UimaConvenience;
 import opennlp.tools.chunker.ChunkerME;
 import opennlp.tools.chunker.ChunkerModel;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.uimafit.component.JCasAnnotator_ImplBase;
-import org.uimafit.descriptor.ConfigurationParameter;
-import org.uimafit.util.JCasUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -31,6 +33,8 @@ public class OpenNlpChunker extends JCasAnnotator_ImplBase {
 
   @ConfigurationParameter(name = PARAM_MODEL_PATH)
   private String modelFilePath;
+
+  private static final Logger logger = LoggerFactory.getLogger(OpenNlpChunker.class);
 
   @Override
   public void initialize(UimaContext aContext) throws ResourceInitializationException {
@@ -58,7 +62,7 @@ public class OpenNlpChunker extends JCasAnnotator_ImplBase {
 
   @Override
   public void process(JCas aJCas) throws AnalysisEngineProcessException {
-    UimaConvenience.printProcessLog(aJCas);
+    UimaConvenience.printProcessLog(aJCas, logger);
 
     // List<Sentence> sentences = UimaConvenience.getAnnotationList(aJCas, Sentence.class);
     List<Sentence> sentences = UimaConvenience.getAnnotationList(aJCas, Sentence.class);
