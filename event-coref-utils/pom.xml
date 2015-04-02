@@ -45,6 +45,26 @@
             <artifactId>uimafit</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+            <version>4.7.2</version>
+        </dependency>
+
+        <!-- Currently use a local repo-->
+        <dependency>
             <groupId>edu.cmu.lti</groupId>
             <artifactId>jawjaw</artifactId>
             <version>1.0.2</version>
@@ -65,9 +85,8 @@
             <version>1.2</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-core</artifactId>
-            <version>4.7.2</version>
+            <groupId>nz.ac.waikato.cms.weka</groupId>
+            <artifactId>weka-stable</artifactId>
         </dependency>
     </dependencies>
 </project>
