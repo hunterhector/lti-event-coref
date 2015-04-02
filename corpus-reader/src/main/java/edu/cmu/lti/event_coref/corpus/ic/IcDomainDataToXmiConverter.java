@@ -1,22 +1,22 @@
 package edu.cmu.lti.event_coref.corpus.ic;
 
 import edu.cmu.lti.event_coref.type.*;
-import edu.cmu.lti.util.general.FileUtils;
-import edu.cmu.lti.util.general.StringUtils;
-import edu.cmu.lti.util.general.TimeUtils;
-import edu.cmu.lti.util.general.XmlUtils;
-import edu.cmu.lti.util.uima.BaseAnalysisEngine;
-import edu.cmu.lti.util.uima.UimaConvenience;
+import edu.cmu.lti.utils.general.FileUtils;
+import edu.cmu.lti.utils.general.StringUtils;
+import edu.cmu.lti.utils.general.TimeUtils;
+import edu.cmu.lti.utils.general.XmlUtils;
+import edu.cmu.lti.utils.uima.BaseAnalysisEngine;
+import edu.cmu.lti.utils.uima.UimaConvenience;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.examples.SourceDocumentInformation;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSList;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uimafit.descriptor.ConfigurationParameter;
 import org.uimafit.util.FSCollectionFactory;
 import org.uimafit.util.JCasUtil;
 import org.w3c.dom.Document;
@@ -76,11 +76,13 @@ public class IcDomainDataToXmiConverter extends BaseAnalysisEngine {
         } catch (Exception e) {
             throw new ResourceInitializationException(e);
         }
+
+//        logger.info(goldStandardInputDir + " " + goldStandardFileExtension + " " + goldStandardViewName);
     }
 
     @Override
     public void process(JCas aJCas) throws AnalysisEngineProcessException {
-        UimaConvenience.printProcessLog(aJCas);
+        UimaConvenience.printProcessLog(aJCas, logger);
 
         JCas goldStandardView = null;
         try {
@@ -360,11 +362,6 @@ public class IcDomainDataToXmiConverter extends BaseAnalysisEngine {
                 }
             }
         }
-
-    /*
-     * if (words.size() > 0) { FSList wordList = FSCollectionFactory.createFSList(aJCas, words);
-     * ann.setWords(wordList); }
-     */
 
         Element firstWord = getFirstNonEllipticalWord(wordNodes, true);
         Element lastWord = getLastNonEllipticalWord(wordNodes, true);

@@ -1,6 +1,6 @@
-package edu.cmu.lti.util.io;
+package edu.cmu.lti.event_coref.io;
 
-import edu.cmu.lti.util.general.FileUtils;
+import edu.cmu.lti.utils.general.FileUtils;
 import org.apache.uima.UimaContext;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.uimafit.descriptor.ConfigurationParameter;

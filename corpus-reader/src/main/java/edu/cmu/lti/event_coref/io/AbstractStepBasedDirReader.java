@@ -1,7 +1,7 @@
-package edu.cmu.lti.util.io;
+package edu.cmu.lti.event_coref.io;
 
 import com.google.common.base.Joiner;
-import edu.cmu.lti.util.general.StringUtils;
+import edu.cmu.lti.utils.general.StringUtils;
 import org.apache.uima.collection.CollectionReader_ImplBase;
 import org.apache.uima.resource.ResourceInitializationException;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * An abstract reader to consume input in a directory whose name is based on the specified date and
+ * An abstract preprocessor to consume input in a directory whose name is based on the specified date and
  * step number for convenience
  *
  * @author Jun Araki

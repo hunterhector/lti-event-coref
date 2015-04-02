@@ -1,19 +1,19 @@
 /**
  *
  */
-package edu.cmu.lti.util.io;
+package edu.cmu.lti.event_coref.io;
 
-import edu.cmu.lti.util.general.FileUtils;
-import edu.cmu.lti.util.general.StringUtils;
-import edu.cmu.lti.util.uima.UimaConvenience;
+import edu.cmu.lti.utils.general.FileUtils;
+import edu.cmu.lti.utils.general.StringUtils;
+import edu.cmu.lti.utils.uima.UimaConvenience;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.examples.SourceDocumentInformation;
+import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.uimafit.component.JCasAnnotator_ImplBase;
-import org.uimafit.descriptor.ConfigurationParameter;
-import org.uimafit.util.JCasUtil;
 
 import java.io.File;
 import java.net.MalformedURLException;

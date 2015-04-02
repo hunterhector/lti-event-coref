@@ -1,7 +1,7 @@
 /**
  * 
  */
-package edu.cmu.lti.util.io;
+package edu.cmu.lti.event_coref.io;
 
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;

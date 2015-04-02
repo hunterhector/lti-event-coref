@@ -1,13 +1,13 @@
 package edu.cmu.lti.event_coref.corpus.ic;
 
-import edu.cmu.lti.event_coref.util.io.PlainTextUtils;
-import edu.cmu.lti.util.uima.BaseAnalysisEngine;
+import edu.cmu.lti.event_coref.utils.io.PlainTextUtils;
+import edu.cmu.lti.utils.uima.BaseAnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.jcas.JCas;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uimafit.descriptor.ConfigurationParameter;
 
 public class IcDomainDataDetagger extends BaseAnalysisEngine {
     private static final Logger logger = LoggerFactory.getLogger(IcDomainDataDetagger.class);

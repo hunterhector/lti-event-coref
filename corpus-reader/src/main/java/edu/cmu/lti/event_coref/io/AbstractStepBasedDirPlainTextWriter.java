@@ -1,7 +1,7 @@
-package edu.cmu.lti.util.io;
+package edu.cmu.lti.event_coref.io;
 
-import edu.cmu.lti.util.general.FileUtils;
-import edu.cmu.lti.util.general.StringUtils;
+import edu.cmu.lti.utils.general.FileUtils;
+import edu.cmu.lti.utils.general.StringUtils;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.examples.SourceDocumentInformation;

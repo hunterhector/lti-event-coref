@@ -1,4 +1,4 @@
-package edu.cmu.lti.util.io;
+package edu.cmu.lti.event_coref.io;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,10 +14,10 @@ import org.apache.uima.util.Progress;
 import org.apache.uima.util.ProgressImpl;
 import org.xml.sax.SAXException;
 
-import edu.cmu.lti.util.general.StringUtils;
+import edu.cmu.lti.utils.general.StringUtils;
 
 /**
- * A simple collection reader that reads CASes in XMI format from a directory in the filesystem.
+ * A simple collection preprocessor that reads CASes in XMI format from a directory in the filesystem.
  */
 public class StepBasedDirXmiCollectionReader extends AbstractStepBasedDirReader {
 

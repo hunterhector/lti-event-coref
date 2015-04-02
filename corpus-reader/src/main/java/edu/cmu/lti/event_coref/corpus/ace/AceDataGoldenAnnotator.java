@@ -39,10 +39,10 @@ import edu.cmu.lti.event_coref.type.EventCoreferenceCluster;
 import edu.cmu.lti.event_coref.type.EventMention;
 import edu.cmu.lti.event_coref.type.EventMentionArgumentLink;
 import edu.cmu.lti.event_coref.type.EventMentionContext;
-import edu.cmu.lti.event_coref.util.APLUtils;
-import edu.cmu.lti.util.type.ComponentAnnotation;
-import edu.cmu.lti.util.type.ComponentTOP;
-import edu.cmu.lti.util.uima.BaseAnalysisEngine;
+import edu.cmu.lti.event_coref.utils.APLUtils;
+import edu.cmu.lti.utils.type.ComponentAnnotation;
+import edu.cmu.lti.utils.type.ComponentTOP;
+import edu.cmu.lti.utils.uima.BaseAnalysisEngine;
 
 /**
  * @author Zhengzhong Liu, Hector

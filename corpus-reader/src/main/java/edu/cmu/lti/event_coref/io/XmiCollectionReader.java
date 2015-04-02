@@ -1,6 +1,6 @@
-package edu.cmu.lti.util.io;
+package edu.cmu.lti.event_coref.io;
 
-import edu.cmu.lti.util.general.StringUtils;
+import edu.cmu.lti.utils.general.StringUtils;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.impl.XmiCasDeserializer;
 import org.apache.uima.collection.CollectionException;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A simple collection reader that reads CASes in XMI format from a directory in the filesystem.
+ * A simple collection preprocessor that reads CASes in XMI format from a directory in the filesystem.
  */
 public class XmiCollectionReader extends CollectionReader_ImplBase {
     /**

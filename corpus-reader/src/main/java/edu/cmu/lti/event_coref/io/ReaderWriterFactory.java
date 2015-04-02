@@ -1,21 +1,19 @@
-package edu.cmu.lti.event_coref.util;
+package edu.cmu.lti.event_coref.io;
 
-import edu.cmu.lti.util.io.*;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.metadata.AnalysisEngineMetaData;
 import org.apache.uima.collection.CollectionReaderDescription;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.metadata.TypeSystemDescription;
-import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.uimafit.factory.AnalysisEngineFactory;
 import org.uimafit.factory.CollectionReaderFactory;
 
 import java.util.Set;
 
-public class EventCorefAnalysisEngineFactory {
+public class ReaderWriterFactory {
 
     /**
-     * Creates a simple XMI reader assuming the directory naming convention
+     * Creates a simple XMI preprocessor assuming the directory naming convention
      *
      * @param parentInputDirName
      * @param baseInputDirName
@@ -27,7 +25,7 @@ public class EventCorefAnalysisEngineFactory {
     public static CollectionReaderDescription createXmiReader(String parentInputDirName,
                                                               String baseInputDirName, Integer stepNumber, Boolean failOnUnkown)
             throws ResourceInitializationException {
-        // Instantiate a collection reader to get XMI as input.
+        // Instantiate a collection preprocessor to get XMI as input.
         CollectionReaderDescription reader = CollectionReaderFactory.createDescription(
                 StepBasedDirXmiCollectionReader.class,
                 StepBasedDirXmiCollectionReader.PARAM_PARENT_INPUT_DIR_PATH, parentInputDirName,
@@ -39,7 +37,7 @@ public class EventCorefAnalysisEngineFactory {
     }
 
     /**
-     * Creates a simple XMI reader with the specified type system, assuming the directory naming
+     * Creates a simple XMI preprocessor with the specified type system, assuming the directory naming
      * convention.
      *
      * @param typeSystemDescription
@@ -54,7 +52,7 @@ public class EventCorefAnalysisEngineFactory {
             TypeSystemDescription typeSystemDescription, String parentInputDirName,
             String baseInputDirName, Integer stepNumber, Boolean failOnUnkown)
             throws ResourceInitializationException {
-        // Instantiate a collection reader to get XMI as input.
+        // Instantiate a collection preprocessor to get XMI as input.
         CollectionReaderDescription reader = CollectionReaderFactory.createDescription(
                 XmiCollectionReader.class, typeSystemDescription,
                 XmiCollectionReader.PARAM_PARENT_INPUT_DIR, parentInputDirName,
@@ -65,7 +63,7 @@ public class EventCorefAnalysisEngineFactory {
     }
 
     /**
-     * Create a gzipped XMI reader assuming the directory naming convention.
+     * Create a gzipped XMI preprocessor assuming the directory naming convention.
      *
      * @param parentInputDirName
      * @param baseInputDirName
@@ -77,7 +75,7 @@ public class EventCorefAnalysisEngineFactory {
     public static CollectionReaderDescription createGzippedXmiReader(String parentInputDirName,
                                                                      String baseInputDirName, Integer stepNumber, Boolean failOnUnkown)
             throws ResourceInitializationException {
-        // Instantiate a collection reader to get XMI as input.
+        // Instantiate a collection preprocessor to get XMI as input.
         CollectionReaderDescription reader = CollectionReaderFactory.createDescription(
                 StepBasedDirGzippedXmiCollectionReader.class,
                 StepBasedDirGzippedXmiCollectionReader.PARAM_PARENT_INPUT_DIR_PATH, parentInputDirName,
@@ -89,7 +87,7 @@ public class EventCorefAnalysisEngineFactory {
     }
 
     /**
-     * Create a gzipped XMI reader, with specified type system. Assuming the directory naming
+     * Create a gzipped XMI preprocessor, with specified type system. Assuming the directory naming
      * convention.
      *
      * @param typeSystemDescription
@@ -104,7 +102,7 @@ public class EventCorefAnalysisEngineFactory {
             TypeSystemDescription typeSystemDescription, String parentInputDirName,
             String baseInputDirName, Integer stepNumber, Boolean failOnUnkown)
             throws ResourceInitializationException {
-        // Instantiate a collection reader to get XMI as input.
+        // Instantiate a collection preprocessor to get XMI as input.
         CollectionReaderDescription reader = CollectionReaderFactory.createDescription(
                 StepBasedDirGzippedXmiCollectionReader.class, typeSystemDescription,
                 StepBasedDirGzippedXmiCollectionReader.PARAM_PARENT_INPUT_DIR_PATH, parentInputDirName,
@@ -116,7 +114,7 @@ public class EventCorefAnalysisEngineFactory {
     }
 
     /**
-     * Creates a Gzipped XMI reader assuming the directory naming convention
+     * Creates a Gzipped XMI preprocessor assuming the directory naming convention
      *
      * @param parentInputDirName
      * @param baseInputDirName
@@ -128,7 +126,7 @@ public class EventCorefAnalysisEngineFactory {
     public static CollectionReaderDescription createGzipXmiReader(String parentInputDirName,
                                                                   String baseInputDirName, Integer stepNumber, Boolean failOnUnkown)
             throws ResourceInitializationException {
-        // Instantiate a collection reader to get XMI as input.
+        // Instantiate a collection preprocessor to get XMI as input.
         CollectionReaderDescription reader = CollectionReaderFactory.createDescription(
                 StepBasedDirGzippedXmiCollectionReader.class,
                 StepBasedDirGzippedXmiCollectionReader.PARAM_PARENT_INPUT_DIR_PATH, parentInputDirName,
@@ -140,7 +138,7 @@ public class EventCorefAnalysisEngineFactory {
     }
 
     /**
-     * Creates a Gzipped XMI reader assuming the directory naming convention
+     * Creates a Gzipped XMI preprocessor assuming the directory naming convention
      *
      * @param parentInputDirName
      * @param baseInputDirName
@@ -153,7 +151,7 @@ public class EventCorefAnalysisEngineFactory {
             TypeSystemDescription typeSystemDescription, String parentInputDirName,
             String baseInputDirName, Integer stepNumber, Boolean failOnUnkown)
             throws ResourceInitializationException {
-        // Instantiate a collection reader to get XMI as input.
+        // Instantiate a collection preprocessor to get XMI as input.
         CollectionReaderDescription reader = CollectionReaderFactory.createDescription(
                 StepBasedDirGzippedXmiCollectionReader.class, typeSystemDescription,
                 StepBasedDirGzippedXmiCollectionReader.PARAM_PARENT_INPUT_DIR_PATH, parentInputDirName,
@@ -165,7 +163,7 @@ public class EventCorefAnalysisEngineFactory {
     }
 
     /**
-     * Creates a simple plain text reader for the text under the specified directory.
+     * Creates a simple plain text preprocessor for the text under the specified directory.
      *
      * @param inputViewName
      * @param parentInputDirName
@@ -177,7 +175,7 @@ public class EventCorefAnalysisEngineFactory {
     public static CollectionReaderDescription createPlainTextReader(String inputViewName,
                                                                     String parentInputDirName, String encoding, String[] textSuffix)
             throws ResourceInitializationException {
-        // Instantiate a collection reader to get plain text as input.
+        // Instantiate a collection preprocessor to get plain text as input.
         CollectionReaderDescription reader = CollectionReaderFactory.createDescription(
                 PlainTextCollectionReader.class, PlainTextCollectionReader.PARAM_INPUT_VIEW_NAME,
                 inputViewName, PlainTextCollectionReader.PARAM_INPUTDIR, parentInputDirName,
@@ -189,7 +187,7 @@ public class EventCorefAnalysisEngineFactory {
     public static CollectionReaderDescription createPlainTextReader(String inputViewName,
                                                                     String[] srcDocInfoViewNames, String parentInputDirName, String encoding,
                                                                     String[] textSuffix) throws ResourceInitializationException {
-        // Instantiate a collection reader to get plain text as input.
+        // Instantiate a collection preprocessor to get plain text as input.
         CollectionReaderDescription reader = CollectionReaderFactory.createDescription(
                 PlainTextCollectionReader.class, PlainTextCollectionReader.PARAM_INPUT_VIEW_NAME,
                 inputViewName, PlainTextCollectionReader.PARAM_SRC_DOC_INFO_VIEW_NAMES,
@@ -199,31 +197,31 @@ public class EventCorefAnalysisEngineFactory {
         return reader;
     }
 
-    /**
-     * Creates a simple analysis engine with a specified type system Current it cannot provide wrapper
-     * to parameters
-     *
-     * @param engineClass
-     * @param typeSystemDescription
-     * @return
-     * @throws org.apache.uima.resource.ResourceInitializationException
-     */
-    public static <T extends JCasAnnotator_ImplBase> AnalysisEngineDescription createAnalysisEngine(
-            Class<T> engineClass, TypeSystemDescription typeSystemDescription)
-            throws ResourceInitializationException {
-        // Instantiate the analysis engine.
-        AnalysisEngineDescription engine = AnalysisEngineFactory.createPrimitiveDescription(
-                engineClass, typeSystemDescription);
-        return engine;
-    }
-
-    public static <T extends JCasAnnotator_ImplBase> AnalysisEngineDescription createAnalysisEngine(
-            Class<T> engineClass, TypeSystemDescription typeSystemDescription,
-            Object... configurationData) throws ResourceInitializationException {
-        // Instantiate the analysis engine.
-        return AnalysisEngineFactory.createPrimitiveDescription(
-                engineClass, typeSystemDescription, configurationData);
-    }
+//    /**
+//     * Creates a simple analysis engine with a specified type system Current it cannot provide wrapper
+//     * to parameters
+//     *
+//     * @param engineClass
+//     * @param typeSystemDescription
+//     * @return
+//     * @throws org.apache.uima.resource.ResourceInitializationException
+//     */
+//    public static <T extends JCasAnnotator_ImplBase> AnalysisEngineDescription createAnalysisEngine(
+//            Class<T> engineClass, TypeSystemDescription typeSystemDescription)
+//            throws ResourceInitializationException {
+//        // Instantiate the analysis engine.
+//        AnalysisEngineDescription engine = AnalysisEngineFactory.createPrimitiveDescription(
+//                engineClass, typeSystemDescription);
+//        return engine;
+//    }
+//
+//    public static <T extends JCasAnnotator_ImplBase> AnalysisEngineDescription createAnalysisEngine(
+//            Class<T> engineClass, TypeSystemDescription typeSystemDescription,
+//            Object... configurationData) throws ResourceInitializationException {
+//        // Instantiate the analysis engine.
+//        return AnalysisEngineFactory.createPrimitiveDescription(
+//                engineClass, typeSystemDescription, configurationData);
+//    }
 
     public static void setTypeSystem(AnalysisEngineDescription coreferenceEngine,
                                      TypeSystemDescription typeSystem) {

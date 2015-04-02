@@ -1,7 +1,7 @@
-package edu.cmu.lti.util.io;
+package edu.cmu.lti.event_coref.io;
 
-import edu.cmu.lti.util.general.ListUtils;
-import edu.cmu.lti.util.general.StringUtils;
+import edu.cmu.lti.utils.general.ListUtils;
+import edu.cmu.lti.utils.general.StringUtils;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.collection.CollectionReader_ImplBase;
@@ -20,21 +20,21 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * A collection reader for text in the IC++ domain.
+ * A collection preprocessor for text in the IC++ domain.
  *
  * @author Jun Araki
  */
-public class PlainTextCollectionReader extends CollectionReader_ImplBase {
-
+public class AppendPeriodSentencePerLinePlainTextCollectionReader extends
+        CollectionReader_ImplBase {
     public static final String PARAM_INPUT_VIEW_NAME = "InputViewName";
 
     public static final String PARAM_SRC_DOC_INFO_VIEW_NAMES = "SrcDocInfoViewNames";
 
     public static final String PARAM_INPUTDIR = "InputDirectory";
 
-    public static final String PARAM_ENCODING = "Encoding";
+    public static final String PARAM_TEXT_SUFFIX = "txt";
 
-    public static final String PARAM_TEXT_SUFFIX = "TextSuffix";
+    public static final String PARAM_ENCODING = "Encoding";
 
     private String inputViewName;
 
@@ -52,25 +52,21 @@ public class PlainTextCollectionReader extends CollectionReader_ImplBase {
         inputViewName = (String) getConfigParameterValue(PARAM_INPUT_VIEW_NAME);
         srcDocInfoViewNames = Arrays
                 .asList((String[]) getConfigParameterValue(PARAM_SRC_DOC_INFO_VIEW_NAMES));
+
         File directory = new File(
                 (String) getConfigParameterValue(PARAM_INPUTDIR));
-        encoding = (String) getConfigParameterValue(PARAM_ENCODING);
 
         String[] suffix = (String[]) getConfigParameterValue(PARAM_TEXT_SUFFIX);
         currentDocIndex = 0;
 
+        encoding = (String) getConfigParameterValue(PARAM_ENCODING);
+
         textFiles = new ArrayList<File>();
-
-        if (directory.isDirectory()) {
-
-            File[] files = directory.listFiles();
-            for (int i = 0; i < files.length; i++) {
-                if (!files[i].isDirectory() && isText(files[i], suffix)) {
-                    textFiles.add(files[i]);
-                }
+        File[] files = directory.listFiles();
+        for (int i = 0; i < files.length; i++) {
+            if (!files[i].isDirectory() && isText(files[i], suffix)) {
+                textFiles.add(files[i]);
             }
-        } else {
-            throw new IllegalArgumentException(String.format("Input Directory [%s] is not found", directory.getAbsolutePath()));
         }
     }
 
@@ -115,9 +111,19 @@ public class PlainTextCollectionReader extends CollectionReader_ImplBase {
         }
 
         // open input stream to file
-        File file = (File) textFiles.get(currentDocIndex++);
+        File file = textFiles.get(currentDocIndex++);
+        String text = "";
 
-        String text = FileUtils.file2String(file, encoding);
+        String rawText = FileUtils.file2String(file, encoding);
+
+        String[] lines = rawText.split("\n");
+        for (String line : lines) {
+            if (line.endsWith(".") || line.endsWith("\"")) {
+                text += line + "\n";
+            } else {
+                text += line + ".\n";
+            }
+        }
 
         // put document in CAS
         if (inputView != null) {
