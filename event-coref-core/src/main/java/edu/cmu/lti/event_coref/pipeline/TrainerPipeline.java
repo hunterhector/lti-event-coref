@@ -52,7 +52,7 @@ public class TrainerPipeline {
         Boolean useCvForTuning = true;
         Integer numberOfFolds = 5;
 
-        Pair<Integer[], Integer[]> documentIndices = getRandomTrainingTestingList(5, 5);
+        Pair<Integer[], Integer[]> documentIndices = getRandomTrainingTestingList(65, 40);
 
         Integer[] trainingDocumentIndicesArr = documentIndices.getValue0();
         Integer[] testingDocumentIndicesArr = documentIndices.getValue1();

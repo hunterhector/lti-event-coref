@@ -11,10 +11,10 @@ import edu.cmu.lti.utils.uima.UimaConvenience;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.CASRuntimeException;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.jcas.JCas;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uimafit.descriptor.ConfigurationParameter;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

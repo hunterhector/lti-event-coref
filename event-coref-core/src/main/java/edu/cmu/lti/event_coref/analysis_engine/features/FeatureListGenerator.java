@@ -10,12 +10,12 @@ import edu.cmu.lti.event_coref.utils.ml.FeatureSet;
 import edu.cmu.lti.utils.uima.UimaConvenience;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.FSCollectionFactory;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uimafit.descriptor.ConfigurationParameter;
-import org.uimafit.util.JCasUtil;
 
 import java.util.List;
 
@@ -44,8 +44,7 @@ public class FeatureListGenerator extends AbstractPlainTextAggregator {
     public void process(JCas aJCas) throws AnalysisEngineProcessException {
         UimaConvenience.printProcessLog(aJCas, logger);
 
-        for (PairwiseEventCoreferenceEvaluation pece : JCasUtil.select(aJCas,
-                PairwiseEventCoreferenceEvaluation.class)) {
+        for (PairwiseEventCoreferenceEvaluation pece : JCasUtil.select(aJCas, PairwiseEventCoreferenceEvaluation.class)) {
             // only process on certain pece if specified. null will process all peces
             if (!(targetPeceComponentId == null || targetPeceComponentId.equals(pece.getComponentId()))) {
                 continue;
