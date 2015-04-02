@@ -9,8 +9,28 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <repositories>
+        <repository>
+            <id>coref-core</id>
+            <url>file://${basedir}/lib</url>
+        </repository>
+    </repositories>
+
+
     <artifactId>event-coref-core</artifactId>
     <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+        </dependency>
         <dependency>
             <groupId>edu.cmu.lti</groupId>
             <artifactId>event-coref-utils</artifactId>
@@ -30,6 +50,15 @@
         <dependency>
             <groupId>org.apache.uima</groupId>
             <artifactId>uimafit-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ac.biu.nlp</groupId>
+            <artifactId>normalization</artifactId>
+            <version>0.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>nz.ac.waikato.cms.weka</groupId>
+            <artifactId>weka-stable</artifactId>
         </dependency>
     </dependencies>
 </project>
