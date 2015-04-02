@@ -20,8 +20,6 @@
         <java.compiler.version>1.7</java.compiler.version>
     </properties>
 
-
-
     <build>
         <plugins>
             <plugin>
@@ -58,6 +56,15 @@
             <groupId>org.jdom</groupId>
             <artifactId>jdom2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>adept</groupId>
+            <artifactId>adept-api</artifactId>
+            <version>1.8-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.uima</groupId>
+            <artifactId>uimaj-tools</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -80,7 +87,8 @@
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>18.0</version>
+                <!-- Semafor require guava 17 or lower-->
+                <version>17.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.uima</groupId>
@@ -141,6 +149,21 @@
                 <groupId>edu.cmu.lti</groupId>
                 <artifactId>nlp-annotators</artifactId>
                 <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>edu.stanford.nlp</groupId>
+                <artifactId>stanford-corenlp</artifactId>
+                <version>3.4.1</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.trove4j</groupId>
+                <artifactId>trove4j</artifactId>
+                <version>3.0.3</version>
+            </dependency>
+            <dependency>
+                <groupId>nz.ac.waikato.cms.weka</groupId>
+                <artifactId>weka-stable</artifactId>
+                <version>3.6.6</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
